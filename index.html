@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>맑은케어 방역 – 전문 소독 · 해충 방제</title>
+  <meta name="description" content="가정과 사업장을 위한 전문 소독 및 해충 방제 서비스. 합리적인 비용, 신속한 출동, 안전한 약제 사용." />
+  <style>
+    :root {
+      --primary: #3eb5ff;
+      --primary-600: #1596eb;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --bg: #ffffff;
+      --soft: #f1f5f9;
+      --footer: #f3f4f6;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+
+    .header { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--border); backdrop-filter: saturate(180%) blur(6px); }
+    .nav { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--primary-600)); display:grid; place-items:center; color:#fff; font-weight: 800; letter-spacing: -0.5px; }
+    .brand-name { font-weight: 800; letter-spacing: -0.3px; }
+
+    .menu { display:flex; gap: 18px; align-items:center; }
+    .menu a { text-decoration:none; color:#374151; font-weight:600; font-size: 15px; }
+    .menu a:hover { color: var(--primary-600); }
+    .cta { padding: 10px 14px; border:1px solid var(--primary); color:#0b3a54; background: rgba(62,181,255,.08); border-radius: 10px; font-weight:700; }
+    .cta:hover { background: rgba(62,181,255,.15); }
+
+    section { padding: 64px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { color: var(--primary-600); font-weight: 800; letter-spacing: .08em; font-size: 12px; text-transform: uppercase; }
+    h1, h2, h3 { letter-spacing: -.02em; margin: 10px 0 12px; }
+    h1 { font-size: clamp(28px, 4.2vw, 44px); }
+    h2 { font-size: clamp(22px, 3vw, 30px); }
+    p.lead { color:#334155; font-size: 18px; line-height: 1.7; }
+
+    .hero { padding-top: 56px; padding-bottom: 56px; background: linear-gradient(0deg, var(--soft), #fff); border-bottom: 1px solid var(--border); }
+    .hero-wrap { display:grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; }
+    .hero-card { background:#fff; border:1px solid var(--border); border-radius: 16px; padding: 16px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .kpi { background: linear-gradient(180deg, #fff, #f8fbff); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    .kpi b { font-size: 22px; display:block; margin-bottom:2px; color:#0b3a54 }
+    .kpi small { color: var(--muted); }
+
+    .buttons { display:flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .btn-primary { background: var(--primary); color:#fff; border: none; padding: 12px 16px; border-radius: 12px; font-weight: 800; text-decoration:none; display:inline-block; }
+    .btn-primary:hover { background: var(--primary-600); }
+    .btn-soft { background: rgba(62,181,255,.1); color:#0b3a54; border:1px solid var(--primary); padding: 12px 16px; border-radius: 12px; font-weight: 800; text-decoration:none; display:inline-block; }
+
+    .grid { display:grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+    .card { background:#fff; border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+    .card h3 { margin-top: 6px; font-size: 18px; }
+    .badge { display:inline-block; font-size: 12px; font-weight:700; padding: 6px 10px; border-radius: 999px; background: rgba(62,181,255,.12); color:#0b3a54; border:1px solid var(--primary); }
+
+    .steps { display:grid; gap:12px; grid-template-columns: repeat(4, 1fr); counter-reset: step; }
+    .step { background: linear-gradient(180deg, #fff, #f8fbff); border:1px solid var(--border); border-radius: 14px; padding:14px; }
+    .step h4::before { counter-increment: step; content: "0" counter(step) ". "; color: var(--primary-600); }
+    .step p { color:#475569; line-height: 1.6; }
+
+    .contact { background: #fff; border-top: 1px solid var(--border); }
+    .contact-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
+    .form { background: #fff; border:1px solid var(--border); border-radius: 16px; padding: 18px; }
+    label { font-weight:700; font-size: 14px; }
+    input, textarea, select { width:100%; margin-top:6px; padding:12px 12px; border:1px solid var(--border); border-radius: 12px; font-size: 15px; }
+    textarea { resize: vertical; min-height: 120px; }
+    .form .row { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .aside { background: linear-gradient(180deg, rgba(62,181,255,.12), rgba(62,181,255,.05)); border:1px solid var(--primary); border-radius: 16px; padding: 18px; }
+    .aside ul { margin:0; padding-left: 18px; }
+    .aside li { margin: 8px 0; }
+
+    footer { background: var(--footer); border-top: 1px solid var(--border); padding: 28px 20px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; color:#374151; display:grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+    .foot-links { display:flex; gap: 16px; flex-wrap: wrap; }
+    .foot-links a { color:#4b5563; text-decoration:none; }
+    .foot-links a:hover { text-decoration: underline; }
+
+    /* 후기 스타일 개선 */
+    blockquote {
+      margin: 0;
+      padding: 16px;
+      font-style: italic;
+      line-height: 1.6;
+      color: #1e293b;
+      position: relative;
+    }
+    blockquote::before {
+      content: "\201C";
+      font-size: 40px;
+      color: var(--primary-600);
+      position: absolute;
+      top: -10px; left: -4px;
+    }
+    figcaption {
+      margin-top: 12px;
+      color: #475569;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap { grid-template-columns: 1fr; }
+      .hero-card { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .menu { display: none; }
+      .hero-card { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .form .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" role="banner">
+    <nav class="nav" aria-label="메인">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true">MC</div>
+        <span class="brand-name">맑은케어 방역</span>
+      </a>
+      <div class="menu">
+        <a href="#about">회사소개</a>
+        <a href="#service">서비스</a>
+        <a href="#process">방역 프로세스</a>
+        <a href="#reviews">고객후기</a>
+        <a class="cta" href="#contact">견적·문의</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="container hero-wrap">
+      <div>
+        <div class="eyebrow">PRO SANITATION & PEST CONTROL</div>
+        <h1>가정과 사업장을 위한 <br>안전한 <span style="color:var(--primary-600)">전문 방역</span></h1>
+        <p class="lead">국가자격 보유 전문 인력이 친환경 약제로 꼼꼼하게 소독합니다. 주거·사무실·식당·공장 등 현장 맞춤 솔루션을 제공합니다.</p>
+        <div class="buttons">
+          <a href="#contact" class="btn-primary">즉시 견적 받기</a>
+          <a href="#service" class="btn-soft">서비스 살펴보기</a>
+        </div>
+        <div style="display:flex; gap:16px; margin-top:18px; flex-wrap:wrap; color:#475569">
+          <span class="badge">당일 출동</span>
+          <span class="badge">안전·무향 약제</span>
+          <span class="badge">A/S 보증</span>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="신뢰 지표">
+        <div class="kpi"><b>97%</b><small>재이용·추천 의사</small></div>
+        <div class="kpi"><b>15,000+</b><small>누적 서비스</small></div>
+        <div class="kpi"><b>1시간 내</b><small>견적 응답</small></div>
+        <div class="kpi"><b>24/7</b><small>긴급 대응</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Service -->
+  <section id="about">
+    <div class="container">
+      <div class="eyebrow">ABOUT</div>
+      <h2>믿을 수 있는 방역 파트너</h2>
+      <p class="lead">맑은케어 방역은 체계적인 진단과 표준화된 작업 매뉴얼로 재발을 최소화합니다. 약제 정보와 작업 후 관리 수칙을 투명하게 안내합니다.</p>
+    </div>
+  </section>
+
+  <section id="service">
+    <div class="container">
+      <div class="eyebrow">SERVICE</div>
+      <h2>주요 서비스</h2>
+      <div class="grid" role="list">
+        <article class="card" role="listitem">
+          <div class="badge">주거 공간</div>
+          <h3>가정·아파트 소독</h3>
+          <p>바퀴·개미·진드기 등 맞춤 방제와 실내 소독, 어린이·반려동물 안전 기준 준수.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="badge">상업 시설</div>
+          <h3>식당·카페·사무실</h3>
+          <p>영업장 위생 점검표 제공, 냄새 최소화 야간 작업 가능, 정기 관리 패키지.</p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="badge">특수 방역</div>
+          <h3>창고·공장·학교</h3>
+          <p>대면적 분무·연막·트랩 병행, 설치류 종합 관리(IPM) 수행.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" style="background: var(--soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="eyebrow">PROCESS</div>
+      <h2>방역 프로세스</h2>
+      <div class="steps">
+        <div class="step">
+          <h4>현장 진단</h4>
+          <p>서식지·유입 경로 파악, 위험 요소 체크리스트 작성.</p>
+        </div>
+        <div class="step">
+          <h4>솔루션 제안</h4>
+          <p>약제·장비·방법을 투명하게 안내, 비용 산출 및 일정 확정.</p>
+        </div>
+        <div class="step">
+          <h4>시공·소독</h4>
+          <p>분무·분사·연막·겔/베이트 등 복합 적용, 취약 구역 집중 처리.</p>
+        </div>
+        <div class="step">
+          <h4>사후 관리</h4>
+          <p>모니터링 및 A/S, 재발 방지 가이드와 위생관리 리포트 제공.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews">
+    <div class="container">
+      <div class="eyebrow">REVIEWS</div>
+      <h2>고객 후기</h2>
+      <div class="grid">
+        <figure class="card">
+          <blockquote>야간에 신속히 와주셔서 다음날 영업 차질이 없었습니다. 처리 후 냄새도 거의 없었어요.</blockquote>
+          <figcaption>— 김○○ (카페 운영)</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>원인부터 설명해주셔서 관리가 쉬워졌습니다. 한 달 뒤에도 깔끔해요.</blockquote>
+          <figcaption>— 박○○ (아파트 거주)</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>공장 라인 특성에 맞춰 작업해줘서 안전하게 진행됐습니다.</blockquote>
+          <figcaption>— 이○○ (제조업)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="eyebrow">CONTACT</div>
+        <h2>견적 및 방문 상담 신청</h2>
+        <form class="form" onsubmit="event.preventDefault(); alert('문의가 접수되었습니다. 빠르게 연락드리겠습니다!'); this.reset();">
+          <div class="row">
+            <div>
+              <label for="name">성함</label>
+              <input id="name" name="name" placeholder="홍길동" required />
+            </div>
+            <div>
+              <label for="phone">연락처</label>
+              <input id="phone" name="phone" placeholder="010-0000-0000" required />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="type">공간 유형</label>
+              <select id="type" name="type">
+                <option>아파트/주택</option>
+                <option>식당/카페</option>
+                <option>사무실</option>
+                <option>공장/창고</option>
+                <option>기타</option>
+              </select>
+            </div>
+            <div>
+              <label for="area">면적(㎡)</label>
+              <input id="area" name="area" type="number" min="1" placeholder="예: 85" />
+            </div>
+          </div>
+          <div style="margin-top:12px">
+            <label for="msg">요청 사항</label>
+            <textarea id="msg" name="msg" placeholder="현장 상황, 원하는 일정 등을 적어주세요."></textarea>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:14px; align-items:center;">
+            <button class="btn-primary" type="submit">무료 견적 요청</button>
+            <a class="btn-soft" href="tel:02-000-0000" aria-label="전화걸기">전화 상담 02-000-0000</a>
+          </div>
+        </form>
+      </div>
+      <aside class="aside" aria-label="안내">
+        <h3 style="margin-top:0">안전 안내</h3>
+        <ul>
+          <li>식품·조리 공간은 별도 보호 조치 후 작업합니다.</li>
+          <li>반려동물은 작업 중 격리, 약제 건조 후 입실 권장.</li>
+          <li>약제 및 물질안전보건자료(MSDS) 요청 시 제공.</li>
+          <li>시공 후 24시간 내 재방문 A/S 보증.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+          <div class="logo" aria-hidden="true">MC</div>
+          <strong>맑은케어 방역</strong>
+        </div>
+        <div style="color:#6b7280">깨끗함을 과학으로. 안전을 기준으로.</div>
+        <div class="foot-links" style="margin-top:10px">
+          <a href="#about">회사소개</a>
+          <a href="#service">서비스</a>
+          <a href="#process">프로세스</a>
+          <a href="#reviews">후기</a>
+          <a href="#contact">문의</a>
+          <a href="#">개인정보처리방침</a>
+        </div>
+      </div>
+      <div style="font-size:14px; color:#4b5563">
+        <div><b>대표</b> 홍길동</div>
+        <div><b>사업자등록번호</b> 000-00-00000</div>
+        <div><b>주소</b> 서울특별시 ○○구 ○○로 123, 3층</div>
+        <div><b>대표번호</b> 02-000-0000 · <b>이메일</b> hello@malgeuncare.co.kr</div>
+        <div style="margin-top:8px">© <span id="year"></span> 맑은케어 방역. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
